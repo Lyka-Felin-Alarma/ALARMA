@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Beautiful Spots in Siargao</title>
+
+    <style>
+        /* ---------- General Styles ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4fbfc;
+        }
+
+        /* ---------- Header ---------- */
+        header {
+            background: linear-gradient(
+                rgba(0, 80, 100, 0.65),
+                rgba(0, 40, 60, 0.75)
+            ),
+            url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e")
+            center/cover;
+
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+        }
+
+        /* ---------- Navigation ---------- */
+        nav {
+            background-color: #006d77;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd166;
+        }
+
+        /* ---------- Main Content ---------- */
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        section > h2 {
+            text-align: center;
+            color: #006d77;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+            font-size: 1.1rem;
+        }
+
+        /* ---------- Places Grid ---------- */
+        .places {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        article {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        article:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        figure img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        figcaption {
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        article .content {
+            padding: 20px;
+        }
+
+        article h3 {
+            color: #006d77;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* ---------- About Section ---------- */
+        .about {
+            background-color: #e0f7fa;
+            padding: 35px;
+            border-radius: 12px;
+        }
+
+        /* ---------- Media Section ---------- */
+        .media-section {
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .media-section h2 {
+            text-align: center;
+            color: #006d77;
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+        }
+
+        .media-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 25px;
+        }
+
+        /* ---------- Video ---------- */
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto 35px;
+            background-color: #003f4a;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* ---------- Audio ---------- */
+        .audio-container {
+            max-width: 700px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .audio-container h3 {
+            color: #006d77;
+            margin-bottom: 10px;
+        }
+
+        .audio-container p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .audio-container audio {
+            width: 100%;
+        }
+
+        /* ---------- Travel Tips ---------- */
+        .tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .tip {
+            background: white;
+            padding: 25px;
+            border-left: 5px solid #006d77;
+            border-radius: 8px;
+        }
+
+        .tip h3 {
+            color: #006d77;
+            margin-bottom: 8px;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            background-color: #003f4a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* ---------- Responsive Design ---------- */
+        @media (max-width: 600px) {
+            header {
+                padding: 70px 15px;
+            }
+
+            header h1 {
+                font-size: 2.3rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav li {
+                margin: 0 7px;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .media-section {
+                padding: 20px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Website Header -->
+    <header>
+        <h1>Discover Siargao</h1>
+        <p>The Surfing Capital and Tropical Paradise of the Philippines</p>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav aria-label="Main Navigation">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#spots">Beautiful Spots</a></li>
+            <li><a href="#media">Video & Audio</a></li>
+            <li><a href="#tips">Travel Tips</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2>About Siargao</h2>
+
+            <p class="intro">
+                Siargao is a beautiful island located in Surigao del Norte,
+                Philippines. Famous for its world-class waves, crystal-clear
+                waters, palm-lined roads, and peaceful island atmosphere,
+                Siargao is a favorite destination for travelers and nature lovers.
+            </p>
+        </section>
+
+
+        <!-- Beautiful Spots Section -->
+        <section id="spots">
+            <h2>Beautiful Spots in Siargao</h2>
+
+            <div class="places">
+
+                <!-- Cloud 9 -->
+                <article>
+                    <figure>
+                        <img
+                            src="https://images.unsplash.com/photo-1502680390469-be75c86b636f"
+                            alt="Surfer riding a wave in Siargao">
+                        <figcaption>Cloud 9 — Siargao</figcaption>
+                    </figure>
+
+                    <h3>Cloud 9</h3>
+
+                    <p>
+                        Cloud 9 is one of Siargao's most famous attractions.
+                        It is internationally known for its powerful waves
+                        and is a popular destination for surfers.
+                    </p>
+                </article>
+
+
+                <!-- Sugba Lagoon -->
+                <article>
+                    <figure>
+                        <img
+                            src="https://images.unsplash.com/photo-1500534623283-312aade485b7"
+                            alt="Beautiful tropical lagoon surrounded by nature">
+                        <figcaption>Sugba Lagoon</figcaption>
+                    </figure>
+
+                    <h3>Sugba Lagoon</h3>
+
+                    <p>
+                        Surrounded by lush limestone formations, Sugba Lagoon
+                        offers turquoise water, peaceful scenery, swimming,
+                        kayaking, and paddleboarding.
+                    </p>
+                </article>
+
+
+                <!-- Magpupungko -->
+                <article>
+                    <figure>
+                        <img
+                            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+                            alt="Tropical beach with clear blue water">
+                        <figcaption>Magpupungko Rock Pools</figcaption>
+                    </figure>
+
+                    <h3>Magpupungko Rock Pools</h3>
+
+                    <p>
+                        During low tide, natural rock pools appear along the
+                        coast. Visitors can swim in the clear water while
+                        enjoying the surrounding coastal scenery.
+                    </p>
+                </article>
+
+
+                <!-- Naked Island -->
+                <article>
+                    <figure>
+                        <img
+                            src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57"
+                            alt="Small tropical island surrounded by blue ocean">
+                        <figcaption>Naked Island</figcaption>
+                    </figure>
+
+                    <h3>Naked Island</h3>
+
+                    <p>
+                        Naked Island is a small sandbar surrounded by clear
+                        blue water. Its simple and peaceful landscape makes
+                        it a perfect place to relax and enjoy the ocean.
+                    </p>
+                </article>
+
+
+                <!-- Guyam Island -->
+                <article>
+                    <figure>
+                        <img
+                            src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda"
+                            alt="Tropical island with palm trees">
+                        <figcaption>Guyam Island</figcaption>
+                    </figure>
+
+                    <h3>Guyam Island</h3>
+
+                    <p>
+                        Guyam Island is a small tropical island covered with
+                        palm trees. It is a relaxing stop for island hopping,
+                        swimming, and taking photographs.
+                    </p>
+                </article>
+
+
+                <!-- Coconut Road -->
+                <article>
+                    <figure>
+                        <img
+                            src="https://images.unsplash.com/photo-1500534623283-312aade485b7"
+                            alt="Palm trees along a tropical road">
+                        <figcaption>Coconut Road</figcaption>
+                    </figure>
+
+                    <h3>Coconut Road</h3>
+
+                    <p>
+                        Siargao's palm-lined roads are among the island's
+                        most recognizable sights. A motorcycle ride through
+                        the coconut groves offers beautiful views of the
+                        island's natural landscape.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- Media Section -->
+        <section id="media" class="media-section">
+
+            <h2>Experience Siargao</h2>
+
+            <p class="media-description">
+                Watch a video and listen to relaxing island sounds to get a
+                glimpse of the beauty and atmosphere of Siargao.
+            </p>
+
+
+            <!-- Video -->
+            <figure class="video-container">
+
+                <video
+                    controls
+                    preload="metadata"
+                    poster="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+
+                    <source
+                        src="C:\Users\alarm\OneDrive\Desktop\ALARMA\VIDEO\Siargao Island Philippines More than just Surfing! - Our Awesome Planet (1080p).mp4">
+
+
+                </video>
+
+                <figcaption>
+                    Aerial video showcasing the beauty of Siargao Island.
+                </figcaption>
+
+            </figure>
+
+
+            <!-- Audio -->
+            <figure class="audio-container">
+
+                <h3>Siargao Island Sounds</h3>
+
+                <p>
+                    Relax and listen to the peaceful sounds of the ocean.
+                </p>
+
+                <audio controls>
+                    <source
+                        src="C:\Users\alarm\OneDrive\Desktop\ALARMA\AUDIO\2 minute meditation music,2 minutes of relaxing music,relaxing background music 2 minutes,Meditation - Meditate (1080p).mp4">
+
+
+                </audio>
+
+            </figure>
+
+        </section>
+
+
+        <!-- Travel Tips Section -->
+        <section id="tips">
+
+            <h2>Travel Tips</h2>
+
+            <ul class="tips">
+
+                <li class="tip">
+                    <h3>Explore Nature</h3>
+                    <p>
+                        Take time to explore the beaches, lagoons, islands,
+                        and coconut forests.
+                    </p>
+                </li>
+
+                <li class="tip">
+                    <h3>Try Surfing</h3>
+                    <p>
+                        Beginners can take surfing lessons while experienced
+                        surfers can enjoy Siargao's famous waves.
+                    </p>
+                </li>
+
+                <li class="tip">
+                    <h3>Check the Tide</h3>
+                    <p>
+                        Check tide schedules before visiting attractions such
+                        as the Magpupungko Rock Pools.
+                    </p>
+                </li>
+
+                <li class="tip">
+                    <h3>Protect the Environment</h3>
+                    <p>
+                        Keep the island clean, avoid single-use plastics, and
+                        respect local communities and marine life.
+                    </p>
+                </li>
+
+            </ul>
+
+        </section>
+
+    </main>
+
+
+    <!-- Website Footer -->
+    <footer>
+        <p>&copy; 2026 Discover Siargao</p>
+        <p>Beautiful Spots in the Philippines</p>
+    </footer>
+
+</body>
